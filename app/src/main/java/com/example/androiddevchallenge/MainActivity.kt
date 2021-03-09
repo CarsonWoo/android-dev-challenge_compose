@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.androiddevchallenge.page.MainPage
+import com.example.androiddevchallenge.page.TimerPage
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
 class MainActivity : AppCompatActivity() {
@@ -38,7 +39,8 @@ class MainActivity : AppCompatActivity() {
 // Start building your app here!
 @Composable
 fun MyApp() {
-    MainPage(LocalContext.current)
+//    MainPage(LocalContext.current)
+    TimerPage()
 }
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)

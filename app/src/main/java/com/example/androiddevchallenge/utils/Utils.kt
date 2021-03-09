@@ -17,10 +17,14 @@ package com.example.androiddevchallenge
 
 import android.content.Context
 import android.content.res.Resources
+import android.os.Handler
+import android.os.Looper
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 private var sDensity = 0F
+
+private val sUiHandler = Handler(Looper.getMainLooper())
 
 private fun getDensity(context: Context): Float {
     if (sDensity == 0F) {
@@ -38,4 +42,12 @@ fun getStatusBarHeight(context: Context): Dp {
         Resources.getSystem().getIdentifier("status_bar_height", "dimen", "android")
     )
     return px2dip(context, statusBarHeightPx).dp
+}
+
+fun runOnUiThread(action: () -> Unit) {
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+        action.invoke()
+    } else {
+        sUiHandler.post(action)
+    }
 }
